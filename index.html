@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โรงพยาบาลลาดพร้าว - ดูแลด้วยใจ ห่วงใยสุขภาพคุณ</title>
+    <style>
+        /* --- Google Fonts (ใช้ฟอนต์ Kanit เพื่อความสวยงาม) --- */
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap');
+
+        /* --- Global Styles --- */
+        :root {
+            --primary-color: #005A9C; /* สีน้ำเงินหลัก */
+            --secondary-color: #1E88E5; /* สีน้ำเงินรอง */
+            --accent-color: #4CAF50; /* สีเขียวสำหรับปุ่ม CTA */
+            --text-color: #333;
+            --light-gray: #f4f7f6;
+            --white-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--accent-color);
+            color: var(--white-color);
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        /* --- Appointment Button (ปุ่มนัดหมายแพทย์) --- */
+        .btn.appointment-btn {
+            /* V V V แก้ไขสีปุ่มที่นี่ V V V */
+            background-color: var(--white-color); /* เปลี่ยนพื้นหลังเป็นสีขาว */
+            color: var(--accent-color); /* เปลี่ยนสีข้อความเป็นสีเขียว */
+            border-color: var(--accent-color); /* เพิ่มเส้นขอบสีเขียว */
+        }
+
+        .btn.appointment-btn:hover {
+            background-color: var(--accent-color); /* สลับสีเมื่อเมาส์ชี้ */
+            color: var(--white-color);
+        }
+        
+        /* --- Other Green Buttons --- */
+        .btn.green-btn {
+            background-color: var(--accent-color);
+            color: var(--white-color);
+        }
+
+        .btn.green-btn:hover {
+            background-color: #45a049;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+       /* --- Header & Navigation --- */
+        .navbar {
+            /* V V V แก้ไขสีพื้นหลังแถบเมนูที่นี่ V V V */
+            background-color: var(--accent-color); /* เปลี่ยนพื้นหลังเป็นสีเขียว */
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 50px;
+            width: auto;
+            vertical-align: middle;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin-left: 20px;
+        }
+
+        .navbar ul li a {
+            /* V V V แก้ไขสีตัวอักษรเมนูที่นี่ V V V */
+            color: var(--white-color); /* เปลี่ยนเป็นสีขาว */
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            color: #e0e0e0; /* สีขาวหม่นลงเล็กน้อยเมื่อเมาส์ชี้ */
+        }
+        
+        .navbar .btn {
+            padding: 10px 20px;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+    height: 90vh;
+    
+    /* V V V แก้ไขบรรทัดนี้ V V V */
+    /* 1. ลบ linear-gradient (ฟิล์มสีดำ) ออก */
+    /* 2. เปลี่ยน URL เป็นรูปภาพ Anniversary ของคุณ */
+    background-image: url('472991675_122183374166058230_6435991152229252920_n.jpg');
+
+    background-size: cover; /* ทำให้รูปภาพขยายเต็มพื้นที่ */
+    background-position: center; /* จัดให้รูปภาพอยู่กึ่งกลาง */
+    background-repeat: no-repeat; /* ไม่ให้รูปภาพซ้ำ */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* จัดปุ่มให้อยู่ตรงกลางแนวตั้ง */
+    text-align: center;
+    margin-top: 70px; 
+}
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%; /* ให้ content ใช้พื้นที่เต็มความกว้าง */
+            max-width: 800px; /* จำกัดความกว้างสูงสุดของ content */
+        }
+
+        .hero-content img.main-hero-image {
+            max-width: 90%; /* รูปภาพไม่เกิน 90% ของพื้นที่ */
+            height: auto;
+            margin-bottom: 30px; /* ระยะห่างจากปุ่ม */
+            object-fit: contain; /* ให้แสดงรูปภาพเต็ม ไม่ถูกตัด */
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3)); /* เพิ่มเงาให้รูปภาพดูมีมิติ */
+        }
+        
+        /* --- Các phần còn lại của CSS giống như trước --- */
+        
+        /* --- Services Section --- */
+        .services {
+            background-color: var(--light-gray);
+        }
+
+        /* --- Services Section --- */
+        .services {
+            background-color: var(--light-gray);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: var(--white-color);
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .service-card img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: auto;
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+        
+        /* --- Packages Section --- */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .package-card {
+            background: var(--white-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .package-card img {
+    width: 100%;
+    height: 180px; /* ลดความสูงลงเล็กน้อย */
+    object-fit: contain; /* เปลี่ยนเป็น contain เพื่อให้เห็นภาพทั้งหมด */
+    padding-top: 10px; /* เพิ่มช่องว่างด้านบนรูปเล็กน้อย */
+}
+        
+        .package-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .package-content h3 {
+             font-size: 1.4rem;
+        }
+        
+        .package-content .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .package-content ul {
+            list-style-type: '✓ ';
+            padding-left: 20px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .package-content li {
+            margin-bottom: 8px;
+        }
+        
+        /* --- Footer --- */
+        .footer {
+            background: #2c3e50;
+            color: var(--white-color);
+            padding-top: 40px;
+            padding-bottom: 20px;
+        }
+        
+        .footer .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .footer p, .footer a {
+            color: #ccc;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            color: var(--white-color);
+        }
+        
+        .footer ul {
+            list-style: none;
+        }
+        
+        .footer li {
+             margin-bottom: 10px;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 2rem;
+            }
+            .hero {
+                 height: 60vh;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .navbar ul {
+                display: none; /* ซ่อนเมนูสำหรับตัวอย่างนี้ */
+            }
+            
+            .navbar .btn {
+                font-size: 0.9rem;
+                padding: 8px 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="Screenshot 2025-10-16 190848.png" alt="โลโก้โรงพยาบาลลาดพร้าว">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#services">ศูนย์การแพทย์</a></li>
+                    <li><a href="#">แพ็กเกจตรวจสุขภาพ</a></li>
+                    <li><a href="#packages">แพ็กเกจ</a></li>
+                    <li><a href="#">เกี่ยวกับเรา</a></li>
+                    <li><a href="#">ติดต่อเรา</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="btn appointment-btn">นัดหมายแพทย์</a>
+        </div>
+    </header>
+
+    <section class="hero">
+    <div class="hero-content">
+    </div>
+</section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2>ศูนย์การแพทย์และคลินิก</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="unnamed (1).jpg" alt="ไอคอนหัวใจ">
+                    <h3>ศูนย์โรคหัวใจ</h3>
+                    <p>ตรวจวินิจฉัยและรักษาโรคหัวใจและหลอดเลือดครบวงจร</p>
+                </div>
+                <div class="service-card">
+                    <img src="unnamed.jpg" alt="ไอคอนสมอง">
+                    <h3>ศูนย์สมองและระบบประสาท</h3>
+                    <p>ดูแลรักษาผู้ป่วยโรคทางสมองและระบบประสาท</p>
+                </div>
+                <div class="service-card">
+                    <img src="unnamed (2).jpg" alt="ไอคอนกระดูก">
+                    <h3>ศูนย์กระดูกและข้อ</h3>
+                    <p>ให้บริการรักษาโรคทางกระดูก ข้อ และกล้ามเนื้อ</p>
+                </div>
+                <div class="service-card">
+                    <img src="unnamed (3).jpg" alt="ไอคอนเด็ก">
+                    <h3>ศูนย์สุขภาพสตรีและเด็ก</h3>
+                    <p>ดูแลสุขภาพสตรีทุกวัยและกุมารเวชกรรม</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="packages" class="packages">
+        <div class="container">
+            <h2>แพ็กเกจตรวจสุขภาพแนะนำ</h2>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <img src="unnamed (4).jpg" alt="รูปตรวจสุขภาพ">
+                    <div class="package-content">
+                        <h3>แพ็กเกจตรวจสุขภาพ Standard</h3>
+                        <p class="price">2,500 บาท</p>
+                        <ul>
+                            <li>ตรวจร่างกายโดยแพทย์</li>
+                            <li>ตรวจความสมบูรณ์ของเม็ดเลือด (CBC)</li>
+                            <li>ตรวจระดับน้ำตาลในเลือด (FBS)</li>
+                            <li>ตรวจการทำงานของไต (Creatinine)</li>
+                        </ul>
+                        <a href="#" class="btn">ดูรายละเอียด</a>
+                    </div>
+                </div>
+                <div class="package-card">
+                    <img src="unnamed (5).jpg" alt="รูปตรวจสุขภาพผู้สูงอายุ">
+                    <div class="package-content">
+                        <h3>แพ็กเกจตรวจสุขภาพสำหรับผู้สูงวัย</h3>
+                        <p class="price">5,900 บาท</p>
+                        <ul>
+                            <li>รายการตรวจ Standard</li>
+                            <li>ตรวจคลื่นไฟฟ้าหัวใจ (EKG)</li>
+                            <li>ตรวจมวลกระดูก</li>
+                            <li>ตรวจคัดกรองมะเร็ง</li>
+                        </ul>
+                        <a href="#" class="btn">ดูรายละเอียด</a>
+                    </div>
+                </div>
+                <div class="package-card">
+                    <img src="unnamed (6).jpg" alt="รูปหัวใจ">
+                    <div class="package-content">
+                        <h3>แพ็กเกจตรวจสุขภาพหัวใจ</h3>
+                        <p class="price">7,500 บาท</p>
+                        <ul>
+                            <li>ตรวจสมรรถภาพหัวใจ (EST)</li>
+                            <li>ตรวจหัวใจด้วยคลื่นเสียง (Echo)</li>
+                            <li>ตรวจไขมันในเลือด (Lipid Profile)</li>
+                            <li>ปรึกษาแพทย์โรคหัวใจ</li>
+                        </ul>
+                        <a href="#" class="btn">ดูรายละเอียด</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="container">
+            <div>
+                <h4>เกี่ยวกับโรงพยาบาล</h4>
+                <p>โรงพยาบาลลาดพร้าว มุ่งมั่นให้บริการทางการแพทย์ที่เป็นเลิศ ด้วยมาตรฐานสากล</p>
+            </div>
+             <div>
+                
+            </div>
+             <div>
+                <h4>ติดต่อเรา</h4>
+                <p>2699 ถนนลาดพร้าว แขวงคลองเจ้าคุณสิงห์<br>เขตวังทองหลาง กรุงเทพมหานคร 10310</p>
+                <p>โทร: 02-530-2244</p>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2025 โรงพยาบาลลาดพร้าว. สงวนลิขสิทธิ์.</p>
+    </footer>
+
+</body>
+</html>
